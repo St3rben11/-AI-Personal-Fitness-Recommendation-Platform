@@ -3,79 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Personal Fitness</title>
+    <title>AI Personal Fitness Recommendation Platform</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <main class="container">
+    <header>
+        <h1>AI Personal Fitness</h1>
+        <p>Personalized Fitness Recommendation Platform</p>
+    </header>
 
-        <h1>AI Personal Fitness Recommendation</h1>
+    <main>
+        <section class="card">
+            <h2>Your Fitness Profile</h2>
 
-        <p class="subtitle">
-            Get a basic personalized fitness recommendation
-        </p>
+            <form id="fitnessForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
 
-        <form id="fitnessForm">
+                <label for="age">Age</label>
+                <input type="number" id="age" placeholder="Enter your age" required>
 
-            <label for="age">Age</label>
-            <input type="number" id="age" required>
+                <label for="height">Height (cm)</label>
+                <input type="number" id="height" placeholder="Enter your height" required>
 
-            <label for="gender">Gender</label>
-            <select id="gender" required>
-                <option value="">Select gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
+                <label for="weight">Weight (kg)</label>
+                <input type="number" id="weight" placeholder="Enter your weight" required>
 
-            <label for="height">Height (cm)</label>
-            <input type="number" id="height" required>
+                <label for="goal">Fitness Goal</label>
+                <select id="goal">
+                    <option value="weight-loss">Weight Loss</option>
+                    <option value="muscle-gain">Muscle Gain</option>
+                    <option value="maintenance">Weight Maintenance</option>
+                </select>
 
-            <label for="weight">Weight (kg)</label>
-            <input type="number" id="weight" required>
+                <label for="activity">Activity Level</label>
+                <select id="activity">
+                    <option value="low">Low</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="high">High</option>
+                </select>
 
-            <label for="goal">Fitness Goal</label>
-            <select id="goal" required>
-                <option value="">Select goal</option>
-                <option value="lose">Lose Weight</option>
-                <option value="maintain">Maintain Weight</option>
-                <option value="gain">Gain Muscle</option>
-            </select>
-
-            <label for="activityLevel">Activity Level</label>
-            <select id="activityLevel" required>
-                <option value="">Select activity level</option>
-                <option value="low">Low</option>
-                <option value="moderate">Moderate</option>
-                <option value="high">High</option>
-            </select>
-
-            <button type="submit">
-                Get Recommendation
-            </button>
-
-        </form>
-
-        <section id="result" class="result hidden">
-            <h2>Your Recommendation</h2>
-
-            <p>
-                <strong>BMI:</strong>
-                <span id="bmi"></span>
-            </p>
-
-            <p>
-                <strong>Goal:</strong>
-                <span id="resultGoal"></span>
-            </p>
-
-            <p id="recommendation"></p>
+                <button type="submit">Get Recommendation</button>
+            </form>
         </section>
 
+        <section class="card" id="results">
+            <h2>Your Recommendation</h2>
+            <p id="recommendation">
+                Enter your information to receive a basic fitness recommendation.
+            </p>
+
+            <div id="calories"></div>
+            <div id="macros"></div>
+            <div id="workout"></div>
+        </section>
     </main>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>AI Personal Fitness Recommendation Platform — MVP</p>
+    </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
