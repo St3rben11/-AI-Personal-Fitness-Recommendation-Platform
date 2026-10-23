@@ -1,6 +1,6 @@
 const form = document.getElementById("fitnessForm");
 
-form.addEventListener("submit", function (event) {
+form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const name = document.getElementById("name").value;
@@ -10,68 +10,59 @@ form.addEventListener("submit", function (event) {
     const goal = document.getElementById("goal").value;
     const activity = document.getElementById("activity").value;
 
-    // Basic BMR calculation
-    const bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+    try {
+        const response = await fetch(
+            "https://miniature-fishstick-5grvrxv67j9ghvp7r-3000.app.github.dev/api/recommendation",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name,
+                    age,
+                    height,
+                    weight,
+                    goal,
+                    activity
+                })
+            }
+        );
 
-    // Activity multiplier
-    let activityMultiplier;
+        const data = await response.json();
 
-    if (activity === "low") {
-        activityMultiplier = 1.2;
-    } else if (activity === "moderate") {
-        activityMultiplier = 1.55;
-    } else {
-        activityMultiplier = 1.725;
+        if (!response.ok) {
+            throw new Error(data.error || "Something went wrong.");
+        }
+
+        document.getElementById("recommendation").textContent =
+            `Hello ${data.name}! Based on your profile, here is your basic fitness recommendation.`;
+
+        document.getElementById("calories").innerHTML = `
+            <strong>Daily Calories:</strong> ${data.calories} kcal
+        `;
+
+        document.getElementById("macros").innerHTML = `
+            <strong>Daily Macronutrients:</strong><br>
+            Protein: ${data.macronutrients.protein} g<br>
+            Carbohydrates: ${data.macronutrients.carbohydrates} g<br>
+            Fats: ${data.macronutrients.fats} g
+        `;
+
+        document.getElementById("workout").innerHTML = `
+            <strong>Workout Recommendation:</strong><br>
+            ${data.workout}
+        `;
+
+    } catch (error) {
+        document.getElementById("recommendation").textContent =
+            "Unable to get recommendation.";
+
+        document.getElementById("calories").textContent =
+            error.message;
+
+        document.getElementById("macros").textContent = "";
+
+        document.getElementById("workout").textContent = "";
     }
-
-    let calories = Math.round(bmr * activityMultiplier);
-
-    // Adjust calories according to fitness goal
-    if (goal === "weight-loss") {
-        calories -= 300;
-    } else if (goal === "muscle-gain") {
-        calories += 300;
-    }
-
-    // Basic macronutrient calculation
-    const protein = Math.round(weight * 1.6);
-    const fats = Math.round(weight * 0.8);
-    const proteinCalories = protein * 4;
-    const fatCalories = fats * 9;
-    const remainingCalories = Math.max(
-        calories - proteinCalories - fatCalories,
-        0
-    );
-
-    const carbohydrates = Math.round(remainingCalories / 4);
-
-    // Workout recommendation
-    let workout;
-
-    if (goal === "weight-loss") {
-        workout = "Full-body workout with moderate cardio, 3–4 times per week.";
-    } else if (goal === "muscle-gain") {
-        workout = "Strength training focused on progressive overload, 3–4 times per week.";
-    } else {
-        workout = "Balanced full-body training with moderate cardio, 3 times per week.";
-    }
-
-    document.getElementById("recommendation").textContent =
-        `Hello ${name}! Based on your profile, here is your basic fitness recommendation.`;
-
-    document.getElementById("calories").innerHTML = `
-        <strong>Daily Calories:</strong> ${calories} kcal
-    `;
-
-    document.getElementById("macros").innerHTML = `
-        <strong>Daily Macronutrients:</strong><br>
-        Protein: ${protein} g<br>
-        Carbohydrates: ${carbohydrates} g<br>
-        Fats: ${fats} g
-    `;
-
-    document.getElementById("workout").innerHTML = `
-        <strong>Workout Recommendation:</strong><br>
-        ${workout}
-    `;
 });
