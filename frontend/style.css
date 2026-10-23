@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background: #1f4e79;
+    background: #2563eb;
     color: white;
     text-align: center;
     padding: 40px 20px;
@@ -24,88 +24,96 @@ header h1 {
 }
 
 header p {
-    font-size: 17px;
+    font-size: 16px;
+    opacity: 0.9;
 }
 
 main {
-    max-width: 1000px;
-    margin: 40px auto;
+    max-width: 900px;
+    margin: 30px auto;
     padding: 0 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
 }
 
 .card {
     background: white;
-    padding: 30px;
     border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 25px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .card h2 {
-    margin-bottom: 25px;
-    color: #1f4e79;
+    margin-bottom: 20px;
+    color: #1e40af;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: 15px;
 }
 
 label {
-    margin-bottom: 6px;
     font-weight: bold;
+    margin-bottom: 4px;
 }
 
 input,
 select {
+    width: 100%;
     padding: 12px;
-    margin-bottom: 18px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
     font-size: 15px;
 }
 
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
 button {
-    padding: 13px;
-    border: none;
-    border-radius: 6px;
-    background: #1f4e79;
+    background: #2563eb;
     color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 button:hover {
-    opacity: 0.9;
+    background: #1d4ed8;
 }
 
-#results {
-    min-height: 300px;
+#result {
+    margin-top: 25px;
+    padding: 20px;
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    border-radius: 8px;
 }
 
-#recommendation {
-    margin-bottom: 20px;
+#result h3 {
+    color: #1e40af;
+    margin-bottom: 10px;
 }
 
-#calories,
-#macros,
-#workout {
-    margin-top: 15px;
-    padding: 12px;
-    background: #f4f7fb;
-    border-radius: 6px;
+#result p {
+    margin-bottom: 8px;
 }
 
-footer {
-    text-align: center;
-    padding: 25px;
-    color: #666;
-}
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 25px;
+    }
 
-@media (max-width: 768px) {
     main {
-        grid-template-columns: 1fr;
+        margin-top: 20px;
+    }
+
+    .card {
+        padding: 20px;
     }
 }
