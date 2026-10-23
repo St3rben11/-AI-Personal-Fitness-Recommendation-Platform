@@ -1,0 +1,45 @@
+%% Use case diagram — UC IDs match docs/06-requirements.md
+%% "Registered user" inherits every use case of "Guest" (actor generalization).
+flowchart LR
+    guest(["👤 Guest"])
+    user(["👤 Registered user"])
+    admin(["👤 Administrator"])
+    user == "generalizes" ==> guest
+
+    subgraph sys["AI Personal Fitness Recommendation Platform"]
+        direction TB
+        uc1(["UC-01 Register account"])
+        uc3(["UC-03 Enter / update fitness profile"])
+        uc6(["UC-06 Get calorie & macronutrient targets"])
+        uc7(["UC-07 Get workout recommendation"])
+        uc2(["UC-02 Log in / log out"])
+        uc8(["UC-08 View recommendation history"])
+        uc9(["UC-09 View dashboard"])
+        uc11(["UC-11 Maintain exercise library & rules"])
+        uc10(["UC-10 Validate input data"])
+        uc4(["UC-04 Select fitness goal"])
+        uc5(["UC-05 Select activity level"])
+    end
+
+    guest --- uc1
+    guest --- uc3
+    guest --- uc6
+    guest --- uc7
+    user --- uc2
+    user --- uc8
+    user --- uc9
+    admin --- uc11
+
+    uc3 -. "«include»" .-> uc10
+    uc3 -. "«include»" .-> uc4
+    uc3 -. "«include»" .-> uc5
+    uc6 -. "«include»" .-> uc10
+    uc9 -. "«include»" .-> uc8
+
+    classDef uc fill:#eff6ff,stroke:#1d4ed8,color:#0f172a
+    classDef inc fill:#f8fafc,stroke:#64748b,color:#0f172a
+    classDef actor fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    class uc1,uc2,uc3,uc6,uc7,uc8,uc9,uc11 uc
+    class uc4,uc5,uc10 inc
+    class guest,user,admin actor
+    style sys fill:#ffffff,stroke:#1d4ed8

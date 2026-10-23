@@ -1,0 +1,45 @@
+%% Entity-relationship diagram — matches database/schema.sql
+erDiagram
+    direction LR
+    USERS ||--o{ RECOMMENDATIONS : "receives"
+    RECOMMENDATIONS ||--|{ WORKOUT_ITEMS : "contains"
+
+    USERS {
+        INTEGER id PK
+        TEXT email UK
+        TEXT password_hash
+        TEXT name
+        INTEGER age
+        TEXT gender
+        REAL height_cm
+        REAL weight_kg
+        TEXT activity_level
+        TEXT fitness_goal
+        TEXT workout_preference
+        TEXT created_at
+        TEXT updated_at
+    }
+    RECOMMENDATIONS {
+        INTEGER id PK
+        INTEGER user_id FK
+        REAL weight_kg
+        TEXT fitness_goal
+        TEXT activity_level
+        INTEGER bmr
+        INTEGER tdee
+        INTEGER daily_calories
+        INTEGER protein_g
+        INTEGER carbohydrates_g
+        INTEGER fats_g
+        TEXT workout_summary
+        TEXT created_at
+    }
+    WORKOUT_ITEMS {
+        INTEGER id PK
+        INTEGER recommendation_id FK
+        TEXT exercise_name
+        TEXT workout_type
+        INTEGER sets
+        TEXT repetitions
+        INTEGER duration_minutes
+    }
