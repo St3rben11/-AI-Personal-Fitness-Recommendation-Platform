@@ -6,30 +6,46 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    background: #f4f7fb;
     color: #222;
-    min-height: 100vh;
+    line-height: 1.6;
 }
 
-.container {
-    width: 90%;
-    max-width: 700px;
-    margin: 50px auto;
+header {
+    background: #1f4e79;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 17px;
+}
+
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.card {
     background: white;
-    padding: 35px;
+    padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    text-align: center;
-    color: #666;
-    margin-bottom: 30px;
+.card h2 {
+    margin-bottom: 25px;
+    color: #1f4e79;
 }
 
 form {
@@ -38,7 +54,6 @@ form {
 }
 
 label {
-    margin-top: 15px;
     margin-bottom: 6px;
     font-weight: bold;
 }
@@ -46,41 +61,51 @@ label {
 input,
 select {
     padding: 12px;
+    margin-bottom: 18px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 button {
-    margin-top: 25px;
     padding: 13px;
     border: none;
     border-radius: 6px;
-    background: #222;
+    background: #1f4e79;
     color: white;
     font-size: 16px;
     cursor: pointer;
 }
 
 button:hover {
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
-.result {
-    margin-top: 30px;
-    padding: 20px;
-    border-radius: 8px;
-    background: #f0f3f5;
+#results {
+    min-height: 300px;
 }
 
-.result h2 {
-    margin-bottom: 15px;
+#recommendation {
+    margin-bottom: 20px;
 }
 
-.result p {
-    margin-top: 10px;
+#calories,
+#macros,
+#workout {
+    margin-top: 15px;
+    padding: 12px;
+    background: #f4f7fb;
+    border-radius: 6px;
 }
 
-.hidden {
-    display: none;
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
 }
