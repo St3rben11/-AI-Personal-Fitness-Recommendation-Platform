@@ -10,6 +10,10 @@ backend/data/
 *.db
 *.db-journal
 
+# Test coverage and logs
+coverage/
+*.log
+
 # OS / editor
 .DS_Store
 .vscode/
