@@ -26,6 +26,33 @@ const FAT_SHARE_OF_CALORIES = 0.25;
 // Safety floor: the engine never recommends less than this daily intake.
 const MIN_CALORIES = { male: 1500, female: 1200 };
 
+// Safety rules (APF-6, NFR-08): smaller deficit for teenagers, adjusted body weight for protein when BMI >= 30.
+const ADULT_AGE = 18;
+const MINOR_MAX_DEFICIT = -0.10;
+const OBESITY_BMI = 30;
+const UNDERWEIGHT_BMI = 18.5;
+const REFERENCE_BMI = 25;
+
+const DISCLAIMER = "These values are approximate estimates for general fitness guidance. " +
+    "They do not replace a consultation with a doctor or a registered dietitian.";
+
+/** Body mass index, kg / m^2. */
+function calculateBmi({ weight, height }) {
+    const meters = height / 100;
+    return weight / (meters * meters);
+}
+
+/**
+ * Body weight used for the protein target. For BMI >= 30 the adjusted body weight is used:
+ * weight at BMI 25 plus 25 % of the excess, so protein is not inflated by fat mass.
+ */
+function calculateProteinWeight({ weight, height }) {
+    if (calculateBmi({ weight, height }) < OBESITY_BMI) return weight;
+    const meters = height / 100;
+    const referenceWeight = REFERENCE_BMI * meters * meters;
+    return referenceWeight + 0.25 * (weight - referenceWeight);
+}
+
 /** Basal metabolic rate, Mifflin-St Jeor equation (1990). */
 function calculateBmr({ weight, height, age, gender }) {
     const base = 10 * weight + 6.25 * height - 5 * age;
@@ -37,8 +64,10 @@ function calculateTdee(bmr, activity) {
     return bmr * ACTIVITY_MULTIPLIERS[activity];
 }
 
-function calculateCalorieTarget(tdee, goal, gender) {
-    const target = tdee * (1 + GOAL_CALORIE_ADJUSTMENT[goal]);
+function calculateCalorieTarget(tdee, goal, gender, age) {
+    let adjustment = GOAL_CALORIE_ADJUSTMENT[goal];
+    if (age < ADULT_AGE) adjustment = Math.max(adjustment, MINOR_MAX_DEFICIT);
+    const target = tdee * (1 + adjustment);
     return Math.round(Math.max(target, MIN_CALORIES[gender]));
 }
 
@@ -106,19 +135,56 @@ function recommendWorkout(goal, activity) {
 function generateRecommendation(profile) {
     const bmr = calculateBmr(profile);
     const tdee = calculateTdee(bmr, profile.activity);
-    const calories = calculateCalorieTarget(tdee, profile.goal, profile.gender);
+    const calories = calculateCalorieTarget(tdee, profile.goal, profile.gender, profile.age);
+    const bmi = calculateBmi(profile);
+    const macronutrients = calculateMacros(calories, calculateProteinWeight(profile), profile.goal);
     return {
         bmr: Math.round(bmr),
         tdee: Math.round(tdee),
         calories,
-        macronutrients: calculateMacros(calories, profile.weight, profile.goal),
-        workout: recommendWorkout(profile.goal, profile.activity)
+        macronutrients,
+        workout: recommendWorkout(profile.goal, profile.activity),
+        bmi: Math.round(bmi * 10) / 10,
+        macronutrientCalories: {
+            protein: macronutrients.protein * 4,
+            carbohydrates: macronutrients.carbohydrates * 4,
+            fats: macronutrients.fats * 9
+        },
+        warnings: collectWarnings(profile, { tdee, calories, bmi }),
+        disclaimer: DISCLAIMER
     };
+}
+
+/** Human-readable safety notes shown next to the recommendation (APF-6, NFR-08). */
+function collectWarnings(profile, { tdee, calories, bmi }) {
+    const warnings = [];
+    const floor = MIN_CALORIES[profile.gender];
+    if (profile.goal === "weight-loss" && profile.age < ADULT_AGE) {
+        warnings.push(`Users under ${ADULT_AGE} get at most a 10% calorie deficit. ` +
+            "Weight loss for teenagers should be supervised by a doctor.");
+    }
+    if (profile.goal === "weight-loss" && bmi < UNDERWEIGHT_BMI) {
+        warnings.push(`BMI is below ${UNDERWEIGHT_BMI}: weight loss is not recommended.`);
+    }
+    if (calories === floor && tdee * (1 + GOAL_CALORIE_ADJUSTMENT[profile.goal]) < floor) {
+        warnings.push(`The calorie target was raised to the safety minimum of ${floor} kcal.`);
+        if (profile.goal === "weight-loss" && calories >= tdee) {
+            warnings.push("The safety minimum is not below your maintenance energy, so no calorie deficit is applied. " +
+                "Please consult a doctor before trying to lose weight.");
+        }
+    }
+    if (bmi >= OBESITY_BMI) {
+        warnings.push("Protein is calculated from an adjusted body weight because BMI is 30 or higher.");
+    }
+    return warnings;
 }
 
 module.exports = {
     ACTIVITY_MULTIPLIERS,
     MIN_CALORIES,
+    DISCLAIMER,
+    calculateBmi,
+    calculateProteinWeight,
     calculateBmr,
     calculateTdee,
     calculateCalorieTarget,
