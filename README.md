@@ -18,7 +18,7 @@ A web platform that turns a user's personal and physical data (age, sex, height,
 | Abzal Bakhtiyarov | Fitness calculations, AI recommendation model, testing & evaluation |
 | Bakhytzhan Abdilmazhit | System architecture, database, backend API, authentication |
 
-**Scientific supervisor:** Dana Altynbek
+**Scientific supervisor:** Dana Yespenbetova
 
 ## Scope
 
