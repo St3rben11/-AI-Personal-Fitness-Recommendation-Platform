@@ -42,4 +42,6 @@ The system should correctly process user fitness information and provide basic p
 - Recommendation logic: Implemented
 - Database schema: Implemented
 - Backend API: Implemented
-- Automated testing: Planned for future development
+- Automated testing: Implemented (16 tests in `backend/test/`, run with `cd backend && npm test`)
+
+The full test plan, test case IDs and evaluation metrics are in [docs/09-verification-plan.md](../docs/09-verification-plan.md).

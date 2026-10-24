@@ -1,0 +1,28 @@
+%% Sequence diagram — authenticated user requests a recommendation (UC-06, UC-07, UC-08)
+sequenceDiagram
+    autonumber
+    actor U as User
+    participant F as Frontend (browser)
+    participant A as Express API
+    participant V as Validation
+    participant E as Recommendation engine
+    participant D as SQLite DB
+
+    U->>F: Fill profile, choose goal & activity
+    F->>A: PUT /api/profile (Bearer JWT)
+    A->>V: validateProfile(body)
+    alt invalid data
+        V-->>A: errors[]
+        A-->>F: 400 Validation failed + details
+        F-->>U: Show error message
+    else valid
+        A->>D: UPDATE users
+        A-->>F: 200 updated profile
+        F->>A: POST /api/recommendations (Bearer JWT)
+        A->>D: SELECT profile
+        A->>E: generateRecommendation(profile)
+        E-->>A: BMR, TDEE, calories, macros, workout
+        A->>D: INSERT recommendations + workout_items (transaction)
+        A-->>F: 201 recommendation JSON
+        F-->>U: Display calories, macros, workout plan
+    end

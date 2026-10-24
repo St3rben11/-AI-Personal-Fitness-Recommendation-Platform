@@ -1,0 +1,26 @@
+%% System context diagram (C4 level 1) — AI Personal Fitness Recommendation Platform
+flowchart LR
+    user["👤 <b>Fitness user</b><br/>Beginner / student who wants<br/>calorie, macro and workout guidance"]
+    guest["👤 <b>Guest visitor</b><br/>Tries the calculator<br/>without an account"]
+    admin["👤 <b>Project team / administrator</b><br/>Maintains rules, exercise<br/>library and deployment"]
+
+    system["<b>AI Personal Fitness<br/>Recommendation Platform</b><br/>Web application that turns a user profile<br/>into calorie, macronutrient and workout<br/>recommendations"]
+
+    wearable["<b>Wearables / health apps</b><br/>Google Fit, Apple Health<br/><i>(future, out of MVP scope)</i>"]
+    llm["<b>External LLM API</b><br/>Explanations / coaching chat<br/><i>(future, out of MVP scope)</i>"]
+    kb["<b>Reference knowledge</b><br/>Mifflin-St Jeor equation, WHO activity<br/>guidelines, ISSN protein ranges"]
+
+    user -- "profile, goal, activity level (HTTPS)" --> system
+    system -- "calories, macros, workout plan, history" --> user
+    guest -- "one-off profile data" --> system
+    admin -- "configures rules, deploys" --> system
+    kb -. "encoded as calculation rules" .-> system
+    system -. "activity data import" .-> wearable
+    system -. "grounded prompts (RAG)" .-> llm
+
+    classDef sys fill:#1d4ed8,stroke:#1e3a8a,color:#fff
+    classDef ext fill:#f1f5f9,stroke:#64748b,color:#0f172a,stroke-dasharray: 5 3
+    classDef person fill:#dbeafe,stroke:#1d4ed8,color:#0f172a
+    class system sys
+    class wearable,llm,kb ext
+    class user,guest,admin person

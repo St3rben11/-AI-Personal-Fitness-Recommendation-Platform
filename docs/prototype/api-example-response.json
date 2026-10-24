@@ -1,0 +1,49 @@
+{
+    "name": "Daniyar",
+    "goal": "weight-loss",
+    "activity": "low",
+    "bmr": 1893,
+    "tdee": 2271,
+    "calories": 1930,
+    "macronutrients": {
+        "protein": 162,
+        "carbohydrates": 199,
+        "fats": 54
+    },
+    "workout": {
+        "level": "beginner",
+        "sessions_per_week": 3,
+        "summary": "Full-body strength circuits combined with moderate-intensity cardio, 3 times per week (beginner level).",
+        "exercises": [
+            {
+                "exercise_name": "Bodyweight squat",
+                "workout_type": "strength",
+                "sets": 3,
+                "repetitions": "12-15"
+            },
+            {
+                "exercise_name": "Push-up (knee or full)",
+                "workout_type": "strength",
+                "sets": 3,
+                "repetitions": "8-12"
+            },
+            {
+                "exercise_name": "Dumbbell row",
+                "workout_type": "strength",
+                "sets": 3,
+                "repetitions": "12"
+            },
+            {
+                "exercise_name": "Plank",
+                "workout_type": "strength",
+                "sets": 3,
+                "repetitions": "30-45 s"
+            },
+            {
+                "exercise_name": "Brisk walking / cycling",
+                "workout_type": "cardio",
+                "duration_minutes": 30
+            }
+        ]
+    }
+}

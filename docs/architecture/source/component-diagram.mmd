@@ -1,0 +1,35 @@
+%% Component diagram (draft) — maps to the folders in the repository
+flowchart TB
+    subgraph browser["Browser — frontend/ (HTML, CSS, JavaScript)"]
+        ui["Profile form &amp; results view<br/><i>index.html, script.js</i>"]
+        dash["User dashboard<br/><i>planned, APF-12</i>"]
+        authui["Login / registration pages<br/><i>planned, APF-11</i>"]
+    end
+
+    subgraph backend["Backend — backend/src (Node.js + Express)"]
+        api["REST API router<br/><i>app.js</i>"]
+        authc["Auth component<br/>scrypt hashing + JWT<br/><i>auth.js</i>"]
+        val["Validation component<br/><i>validation.js</i>"]
+        engine["Recommendation engine<br/>BMR / TDEE / macros / workouts<br/><i>calculations.js</i>"]
+        repo["Data access layer<br/><i>db.js</i>"]
+        ml["ML recommendation module<br/>(content-based / KNN)<br/><i>planned, APF-13</i>"]
+    end
+
+    db[("SQLite database<br/><i>database/schema.sql</i><br/>users · recommendations · workout_items")]
+
+    ui -- "HTTP/JSON (fetch)" --> api
+    dash -- "HTTP/JSON + Bearer JWT" --> api
+    authui -- "HTTP/JSON" --> api
+    api --> authc
+    api --> val
+    api --> engine
+    api --> repo
+    engine -. "same interface,<br/>future replacement" .- ml
+    repo -- "SQL (node:sqlite)" --> db
+
+    classDef planned fill:#fff7ed,stroke:#c2410c,color:#0f172a,stroke-dasharray: 5 3
+    classDef done fill:#ecfdf5,stroke:#047857,color:#0f172a
+    class dash,authui,ml planned
+    class ui,api,authc,val,engine,repo done
+    style browser fill:#ffffff,stroke:#64748b
+    style backend fill:#ffffff,stroke:#64748b

@@ -1,14 +1,23 @@
 {
   "name": "ai-personal-fitness-backend",
-  "version": "1.0.0",
-  "description": "Backend for AI Personal Fitness Recommendation Platform",
+  "version": "0.2.0",
+  "description": "Backend REST API for the AI Personal Fitness Recommendation Platform",
   "main": "src/server.js",
+  "engines": {
+    "node": ">=22.13"
+  },
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node src/server.js"
+    "dev": "node --watch src/server.js",
+    "test": "node --test --test-reporter=spec",
+    "test:coverage": "node --test --experimental-test-coverage"
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
   }
 }

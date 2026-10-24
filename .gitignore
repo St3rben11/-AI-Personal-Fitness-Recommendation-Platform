@@ -1,1 +1,16 @@
-backend/node_modules/
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+*.env.local
+
+# Local database files
+backend/data/
+*.db
+*.db-journal
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

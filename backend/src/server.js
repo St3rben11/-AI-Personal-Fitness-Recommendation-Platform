@@ -1,103 +1,23 @@
-const express = require("express");
-const cors = require("cors");
+// Entry point: reads configuration from environment variables and starts the HTTP server.
+// Copy backend/.env.example to backend/.env and run `npm start` (Node.js >= 22.13).
 
-const app = express();
-const PORT = 3000;
+const path = require("node:path");
+try { process.loadEnvFile(path.join(__dirname, "..", ".env")); } catch { /* .env is optional */ }
 
-app.use(cors());
-app.use(express.json());
+const { createApp } = require("./app");
+const { openDatabase } = require("./db");
 
-app.get("/", (req, res) => {
-    res.json({
-        message: "AI Personal Fitness Recommendation Platform API",
-        status: "running"
-    });
-});
+const PORT = Number(process.env.PORT) || 3000;
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, "..", "data", "fitness.db");
+const JWT_SECRET = process.env.JWT_SECRET;
 
-app.post("/api/recommendation", (req, res) => {
-    const { name, age, height, weight, goal, activity } = req.body;
+if (!JWT_SECRET) {
+    console.error("JWT_SECRET is not set. Copy backend/.env.example to backend/.env and set a value.");
+    process.exit(1);
+}
 
-    // Validate input
-    if (!name || !age || !height || !weight || !goal || !activity) {
-        return res.status(400).json({
-            error: "All fields are required."
-        });
-    }
-
-    if (age <= 0 || height <= 0 || weight <= 0) {
-        return res.status(400).json({
-            error: "Age, height and weight must be positive numbers."
-        });
-    }
-
-    // Basic BMR calculation
-    const bmr =
-        10 * Number(weight) +
-        6.25 * Number(height) -
-        5 * Number(age) +
-        5;
-
-    // Activity multiplier
-    let activityMultiplier;
-
-    if (activity === "low") {
-        activityMultiplier = 1.2;
-    } else if (activity === "moderate") {
-        activityMultiplier = 1.55;
-    } else {
-        activityMultiplier = 1.725;
-    }
-
-    let calories = Math.round(bmr * activityMultiplier);
-
-    // Adjust calories according to fitness goal
-    if (goal === "weight-loss") {
-        calories -= 300;
-    } else if (goal === "muscle-gain") {
-        calories += 300;
-    }
-
-    // Basic macronutrient calculation
-    const protein = Math.round(Number(weight) * 1.6);
-    const fats = Math.round(Number(weight) * 0.8);
-
-    const proteinCalories = protein * 4;
-    const fatCalories = fats * 9;
-
-    const remainingCalories = Math.max(
-        calories - proteinCalories - fatCalories,
-        0
-    );
-
-    const carbohydrates = Math.round(remainingCalories / 4);
-
-    // Workout recommendation
-    let workout;
-
-    if (goal === "weight-loss") {
-        workout =
-            "Full-body workout with moderate cardio, 3–4 times per week.";
-    } else if (goal === "muscle-gain") {
-        workout =
-            "Strength training focused on progressive overload, 3–4 times per week.";
-    } else {
-        workout =
-            "Balanced full-body training with moderate cardio, 3 times per week.";
-    }
-
-    res.json({
-        name,
-        goal,
-        activity,
-        calories,
-        macronutrients: {
-            protein,
-            carbohydrates,
-            fats
-        },
-        workout
-    });
-});
+const db = openDatabase(DB_PATH);
+const app = createApp({ db, jwtSecret: JWT_SECRET, corsOrigin: process.env.CORS_ORIGIN || "*" });
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
