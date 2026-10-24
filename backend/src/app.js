@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const { validateProfile, validateCredentials } = require("./validation");
 const { generateRecommendation } = require("./calculations");
+const { recommendWorkouts } = require("./recommendation/aiModel");
 const { hashPassword, verifyPassword, signToken, requireAuth } = require("./auth");
 
 function toPublicUser(u) {
@@ -80,7 +81,8 @@ function createApp({ db, jwtSecret, corsOrigin = "*", serveFrontend = true }) {
         const { value, errors } = validateProfile(req.body);
         if (errors.length) return res.status(400).json({ error: "Validation failed.", details: errors });
         const rec = generateRecommendation(value);
-        return res.json({ name: value.name, goal: value.goal, activity: value.activity, ...rec });
+        return res.json({ name: value.name, goal: value.goal, activity: value.activity, ...rec,
+            aiRecommendations: recommendWorkouts({ ...value, workoutPreference: req.body.workoutPreference }) });
     });
 
     // Authenticated: uses the stored profile, saves the result to history.
@@ -95,7 +97,8 @@ function createApp({ db, jwtSecret, corsOrigin = "*", serveFrontend = true }) {
         }
         const rec = generateRecommendation(value);
         const id = db.saveRecommendation(req.userId, value, rec);
-        return res.status(201).json({ id, name: value.name, goal: value.goal, activity: value.activity, ...rec });
+        return res.status(201).json({ id, name: value.name, goal: value.goal, activity: value.activity, ...rec,
+            aiRecommendations: recommendWorkouts({ ...value, workoutPreference: u.workout_preference }) });
     });
 
     app.get("/api/recommendations", auth, (req, res) => {
