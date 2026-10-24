@@ -1,0 +1,437 @@
+[
+    {
+        "id": "wl-01",
+        "name": "Walking Start",
+        "goal": "weight-loss",
+        "level": "beginner",
+        "type": "cardio",
+        "intensity": 1,
+        "daysPerWeek": 3,
+        "durationMin": 30,
+        "equipment": "home",
+        "description": "Gentle start for people who are not active yet: brisk walking plus light core work.",
+        "exercises": [
+            { "exercise_name": "Brisk walking", "workout_type": "cardio", "duration_minutes": 25 },
+            { "exercise_name": "Dead bug", "workout_type": "strength", "sets": 2, "repetitions": "10" },
+            { "exercise_name": "Stretching", "workout_type": "mobility", "duration_minutes": 5 }
+        ]
+    },
+    {
+        "id": "wl-02",
+        "name": "Low-Impact Full-Body Circuit",
+        "goal": "weight-loss",
+        "level": "beginner",
+        "type": "mixed",
+        "intensity": 1,
+        "daysPerWeek": 3,
+        "durationMin": 35,
+        "equipment": "home",
+        "description": "Joint-friendly bodyweight circuit with short walking breaks.",
+        "exercises": [
+            { "exercise_name": "Chair squat", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Wall push-up", "workout_type": "strength", "sets": 3, "repetitions": "10" },
+            { "exercise_name": "Glute bridge", "workout_type": "strength", "sets": 3, "repetitions": "12" },
+            { "exercise_name": "Marching in place", "workout_type": "cardio", "duration_minutes": 10 }
+        ]
+    },
+    {
+        "id": "wl-03",
+        "name": "Beginner Gym Machines and Bike",
+        "goal": "weight-loss",
+        "level": "beginner",
+        "type": "mixed",
+        "intensity": 2,
+        "daysPerWeek": 3,
+        "durationMin": 45,
+        "equipment": "gym",
+        "description": "Guided machine strength work followed by stationary bike cardio.",
+        "exercises": [
+            { "exercise_name": "Leg press", "workout_type": "strength", "sets": 3, "repetitions": "12" },
+            { "exercise_name": "Chest press machine", "workout_type": "strength", "sets": 3, "repetitions": "12" },
+            { "exercise_name": "Seated cable row", "workout_type": "strength", "sets": 3, "repetitions": "12" },
+            { "exercise_name": "Stationary bike", "workout_type": "cardio", "duration_minutes": 20 }
+        ]
+    },
+    {
+        "id": "wl-04",
+        "name": "Steady Cardio and Core",
+        "goal": "weight-loss",
+        "level": "intermediate",
+        "type": "cardio",
+        "intensity": 2,
+        "daysPerWeek": 4,
+        "durationMin": 40,
+        "equipment": "gym",
+        "description": "Moderate-intensity steady-state cardio with a short core finisher.",
+        "exercises": [
+            { "exercise_name": "Incline treadmill walk", "workout_type": "cardio", "duration_minutes": 20 },
+            { "exercise_name": "Elliptical trainer", "workout_type": "cardio", "duration_minutes": 10 },
+            { "exercise_name": "Plank", "workout_type": "strength", "sets": 3, "repetitions": "40 s" },
+            { "exercise_name": "Bicycle crunch", "workout_type": "strength", "sets": 3, "repetitions": "15 per side" }
+        ]
+    },
+    {
+        "id": "wl-05",
+        "name": "Metabolic Strength Circuit",
+        "goal": "weight-loss",
+        "level": "intermediate",
+        "type": "mixed",
+        "intensity": 2,
+        "daysPerWeek": 4,
+        "durationMin": 45,
+        "equipment": "home",
+        "description": "Dumbbell circuit with minimal rest to keep the heart rate up.",
+        "exercises": [
+            { "exercise_name": "Goblet squat", "workout_type": "strength", "sets": 3, "repetitions": "12-15" },
+            { "exercise_name": "Push-up", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Dumbbell row", "workout_type": "strength", "sets": 3, "repetitions": "12" },
+            { "exercise_name": "Reverse lunge", "workout_type": "strength", "sets": 3, "repetitions": "10 per leg" },
+            { "exercise_name": "Jumping jacks", "workout_type": "cardio", "duration_minutes": 10 }
+        ]
+    },
+    {
+        "id": "wl-06",
+        "name": "Bodyweight HIIT 20",
+        "goal": "weight-loss",
+        "level": "intermediate",
+        "type": "hiit",
+        "intensity": 3,
+        "daysPerWeek": 3,
+        "durationMin": 25,
+        "equipment": "home",
+        "description": "Short high-intensity intervals: 40 s work, 20 s rest.",
+        "exercises": [
+            { "exercise_name": "Squat jump", "workout_type": "strength", "sets": 4, "repetitions": "40 s" },
+            { "exercise_name": "Mountain climber", "workout_type": "cardio", "duration_minutes": 4 },
+            { "exercise_name": "Burpee", "workout_type": "strength", "sets": 4, "repetitions": "40 s" },
+            { "exercise_name": "High knees", "workout_type": "cardio", "duration_minutes": 4 },
+            { "exercise_name": "Cool-down stretching", "workout_type": "mobility", "duration_minutes": 5 }
+        ]
+    },
+    {
+        "id": "wl-07",
+        "name": "Fat-Loss Strength and Intervals",
+        "goal": "weight-loss",
+        "level": "advanced",
+        "type": "mixed",
+        "intensity": 3,
+        "daysPerWeek": 5,
+        "durationMin": 50,
+        "equipment": "gym",
+        "description": "Heavy compound lifts to keep muscle, followed by rowing intervals.",
+        "exercises": [
+            { "exercise_name": "Barbell squat", "workout_type": "strength", "sets": 4, "repetitions": "8" },
+            { "exercise_name": "Bench press", "workout_type": "strength", "sets": 4, "repetitions": "8" },
+            { "exercise_name": "Barbell row", "workout_type": "strength", "sets": 4, "repetitions": "8" },
+            { "exercise_name": "Rowing machine intervals", "workout_type": "cardio", "duration_minutes": 15 }
+        ]
+    },
+    {
+        "id": "wl-08",
+        "name": "Advanced HIIT and Conditioning",
+        "goal": "weight-loss",
+        "level": "advanced",
+        "type": "hiit",
+        "intensity": 3,
+        "daysPerWeek": 4,
+        "durationMin": 35,
+        "equipment": "gym",
+        "description": "Kettlebell and sprint conditioning for already active users.",
+        "exercises": [
+            { "exercise_name": "Kettlebell swing", "workout_type": "strength", "sets": 5, "repetitions": "20" },
+            { "exercise_name": "Assault bike sprints", "workout_type": "cardio", "duration_minutes": 10 },
+            { "exercise_name": "Box jump", "workout_type": "strength", "sets": 4, "repetitions": "10" },
+            { "exercise_name": "Battle ropes", "workout_type": "cardio", "duration_minutes": 5 }
+        ]
+    },
+    {
+        "id": "mg-01",
+        "name": "Beginner Full-Body Dumbbell",
+        "goal": "muscle-gain",
+        "level": "beginner",
+        "type": "strength",
+        "intensity": 2,
+        "daysPerWeek": 3,
+        "durationMin": 45,
+        "equipment": "home",
+        "description": "Three full-body dumbbell sessions per week with progressive overload.",
+        "exercises": [
+            { "exercise_name": "Goblet squat", "workout_type": "strength", "sets": 3, "repetitions": "8-12" },
+            { "exercise_name": "Dumbbell floor press", "workout_type": "strength", "sets": 3, "repetitions": "8-12" },
+            { "exercise_name": "One-arm dumbbell row", "workout_type": "strength", "sets": 3, "repetitions": "10" },
+            { "exercise_name": "Dumbbell Romanian deadlift", "workout_type": "strength", "sets": 3, "repetitions": "10" }
+        ]
+    },
+    {
+        "id": "mg-02",
+        "name": "Beginner Full-Body Machines",
+        "goal": "muscle-gain",
+        "level": "beginner",
+        "type": "strength",
+        "intensity": 1,
+        "daysPerWeek": 3,
+        "durationMin": 45,
+        "equipment": "gym",
+        "description": "Machine-based program that teaches movement patterns safely.",
+        "exercises": [
+            { "exercise_name": "Leg press", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Chest press machine", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Lat pulldown", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Seated leg curl", "workout_type": "strength", "sets": 3, "repetitions": "12" }
+        ]
+    },
+    {
+        "id": "mg-03",
+        "name": "Bodyweight Strength Basics",
+        "goal": "muscle-gain",
+        "level": "beginner",
+        "type": "strength",
+        "intensity": 1,
+        "daysPerWeek": 3,
+        "durationMin": 35,
+        "equipment": "home",
+        "description": "No-equipment strength foundation with easier exercise variations.",
+        "exercises": [
+            { "exercise_name": "Bodyweight squat", "workout_type": "strength", "sets": 3, "repetitions": "15" },
+            { "exercise_name": "Incline push-up", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Towel row", "workout_type": "strength", "sets": 3, "repetitions": "12" },
+            { "exercise_name": "Glute bridge", "workout_type": "strength", "sets": 3, "repetitions": "15" }
+        ]
+    },
+    {
+        "id": "mg-04",
+        "name": "Upper/Lower Split",
+        "goal": "muscle-gain",
+        "level": "intermediate",
+        "type": "strength",
+        "intensity": 2,
+        "daysPerWeek": 4,
+        "durationMin": 60,
+        "equipment": "gym",
+        "description": "Two upper-body and two lower-body days with compound lifts.",
+        "exercises": [
+            { "exercise_name": "Barbell squat", "workout_type": "strength", "sets": 4, "repetitions": "6-10" },
+            { "exercise_name": "Bench press", "workout_type": "strength", "sets": 4, "repetitions": "6-10" },
+            { "exercise_name": "Romanian deadlift", "workout_type": "strength", "sets": 3, "repetitions": "8-10" },
+            { "exercise_name": "Pull-up / lat pulldown", "workout_type": "strength", "sets": 3, "repetitions": "8-10" },
+            { "exercise_name": "Overhead press", "workout_type": "strength", "sets": 3, "repetitions": "8-10" }
+        ]
+    },
+    {
+        "id": "mg-05",
+        "name": "Home Dumbbell Hypertrophy",
+        "goal": "muscle-gain",
+        "level": "intermediate",
+        "type": "strength",
+        "intensity": 2,
+        "daysPerWeek": 4,
+        "durationMin": 50,
+        "equipment": "home",
+        "description": "Higher-volume dumbbell training for muscle growth at home.",
+        "exercises": [
+            { "exercise_name": "Bulgarian split squat", "workout_type": "strength", "sets": 4, "repetitions": "10 per leg" },
+            { "exercise_name": "Dumbbell bench press", "workout_type": "strength", "sets": 4, "repetitions": "8-12" },
+            { "exercise_name": "Dumbbell row", "workout_type": "strength", "sets": 4, "repetitions": "10-12" },
+            { "exercise_name": "Dumbbell shoulder press", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Dumbbell curl", "workout_type": "strength", "sets": 3, "repetitions": "12" }
+        ]
+    },
+    {
+        "id": "mg-06",
+        "name": "Push/Pull/Legs Hypertrophy",
+        "goal": "muscle-gain",
+        "level": "advanced",
+        "type": "strength",
+        "intensity": 3,
+        "daysPerWeek": 5,
+        "durationMin": 70,
+        "equipment": "gym",
+        "description": "High-volume split for experienced lifters who already train often.",
+        "exercises": [
+            { "exercise_name": "Incline bench press", "workout_type": "strength", "sets": 4, "repetitions": "6-10" },
+            { "exercise_name": "Weighted pull-up", "workout_type": "strength", "sets": 4, "repetitions": "6-8" },
+            { "exercise_name": "Back squat", "workout_type": "strength", "sets": 4, "repetitions": "6-8" },
+            { "exercise_name": "Barbell hip thrust", "workout_type": "strength", "sets": 3, "repetitions": "8-10" },
+            { "exercise_name": "Lateral raise", "workout_type": "strength", "sets": 3, "repetitions": "12-15" }
+        ]
+    },
+    {
+        "id": "mg-07",
+        "name": "Strength and Power Compound",
+        "goal": "muscle-gain",
+        "level": "advanced",
+        "type": "strength",
+        "intensity": 3,
+        "daysPerWeek": 4,
+        "durationMin": 65,
+        "equipment": "gym",
+        "description": "Low-repetition heavy compound lifts for strength and size.",
+        "exercises": [
+            { "exercise_name": "Deadlift", "workout_type": "strength", "sets": 5, "repetitions": "3-5" },
+            { "exercise_name": "Back squat", "workout_type": "strength", "sets": 5, "repetitions": "5" },
+            { "exercise_name": "Bench press", "workout_type": "strength", "sets": 5, "repetitions": "5" },
+            { "exercise_name": "Barbell row", "workout_type": "strength", "sets": 4, "repetitions": "6" }
+        ]
+    },
+    {
+        "id": "mg-08",
+        "name": "Hybrid Muscle and Conditioning",
+        "goal": "muscle-gain",
+        "level": "intermediate",
+        "type": "mixed",
+        "intensity": 2,
+        "daysPerWeek": 4,
+        "durationMin": 55,
+        "equipment": "gym",
+        "description": "Hypertrophy work with short conditioning blocks to keep fitness up.",
+        "exercises": [
+            { "exercise_name": "Front squat", "workout_type": "strength", "sets": 4, "repetitions": "8" },
+            { "exercise_name": "Dumbbell bench press", "workout_type": "strength", "sets": 4, "repetitions": "10" },
+            { "exercise_name": "Cable row", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Sled push", "workout_type": "cardio", "duration_minutes": 8 }
+        ]
+    },
+    {
+        "id": "mt-01",
+        "name": "Active Lifestyle Basics",
+        "goal": "maintenance",
+        "level": "beginner",
+        "type": "mixed",
+        "intensity": 1,
+        "daysPerWeek": 3,
+        "durationMin": 30,
+        "equipment": "home",
+        "description": "Light strength, walking and stretching to stay healthy and mobile.",
+        "exercises": [
+            { "exercise_name": "Bodyweight squat", "workout_type": "strength", "sets": 2, "repetitions": "12" },
+            { "exercise_name": "Incline push-up", "workout_type": "strength", "sets": 2, "repetitions": "10" },
+            { "exercise_name": "Walking", "workout_type": "cardio", "duration_minutes": 15 },
+            { "exercise_name": "Full-body stretching", "workout_type": "mobility", "duration_minutes": 5 }
+        ]
+    },
+    {
+        "id": "mt-02",
+        "name": "Mobility and Light Strength",
+        "goal": "maintenance",
+        "level": "beginner",
+        "type": "mixed",
+        "intensity": 1,
+        "daysPerWeek": 3,
+        "durationMin": 30,
+        "equipment": "home",
+        "description": "Mobility-first routine with resistance bands, suitable for older adults.",
+        "exercises": [
+            { "exercise_name": "Hip and shoulder mobility flow", "workout_type": "mobility", "duration_minutes": 10 },
+            { "exercise_name": "Band row", "workout_type": "strength", "sets": 3, "repetitions": "12" },
+            { "exercise_name": "Sit-to-stand", "workout_type": "strength", "sets": 3, "repetitions": "10" },
+            { "exercise_name": "Bird dog", "workout_type": "strength", "sets": 2, "repetitions": "8 per side" }
+        ]
+    },
+    {
+        "id": "mt-03",
+        "name": "Easy Cardio Mix",
+        "goal": "maintenance",
+        "level": "beginner",
+        "type": "cardio",
+        "intensity": 1,
+        "daysPerWeek": 3,
+        "durationMin": 35,
+        "equipment": "gym",
+        "description": "Varied low-intensity cardio on gym machines.",
+        "exercises": [
+            { "exercise_name": "Stationary bike", "workout_type": "cardio", "duration_minutes": 15 },
+            { "exercise_name": "Elliptical trainer", "workout_type": "cardio", "duration_minutes": 15 },
+            { "exercise_name": "Stretching", "workout_type": "mobility", "duration_minutes": 5 }
+        ]
+    },
+    {
+        "id": "mt-04",
+        "name": "Balanced Full-Body",
+        "goal": "maintenance",
+        "level": "intermediate",
+        "type": "mixed",
+        "intensity": 2,
+        "daysPerWeek": 4,
+        "durationMin": 45,
+        "equipment": "gym",
+        "description": "Even mix of strength, cardio and mobility to keep the current shape.",
+        "exercises": [
+            { "exercise_name": "Lunge", "workout_type": "strength", "sets": 3, "repetitions": "10 per leg" },
+            { "exercise_name": "Dumbbell bench press", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Lat pulldown", "workout_type": "strength", "sets": 3, "repetitions": "10-12" },
+            { "exercise_name": "Treadmill jog", "workout_type": "cardio", "duration_minutes": 15 },
+            { "exercise_name": "Stretching", "workout_type": "mobility", "duration_minutes": 5 }
+        ]
+    },
+    {
+        "id": "mt-05",
+        "name": "Run and Bodyweight",
+        "goal": "maintenance",
+        "level": "intermediate",
+        "type": "mixed",
+        "intensity": 2,
+        "daysPerWeek": 4,
+        "durationMin": 40,
+        "equipment": "home",
+        "description": "Outdoor jogging combined with a bodyweight strength block.",
+        "exercises": [
+            { "exercise_name": "Jogging", "workout_type": "cardio", "duration_minutes": 20 },
+            { "exercise_name": "Push-up", "workout_type": "strength", "sets": 3, "repetitions": "10-15" },
+            { "exercise_name": "Split squat", "workout_type": "strength", "sets": 3, "repetitions": "10 per leg" },
+            { "exercise_name": "Side plank", "workout_type": "strength", "sets": 2, "repetitions": "30 s per side" }
+        ]
+    },
+    {
+        "id": "mt-06",
+        "name": "Functional Fitness Intervals",
+        "goal": "maintenance",
+        "level": "intermediate",
+        "type": "hiit",
+        "intensity": 2,
+        "daysPerWeek": 3,
+        "durationMin": 35,
+        "equipment": "home",
+        "description": "Moderate interval training with functional movements.",
+        "exercises": [
+            { "exercise_name": "Kettlebell or dumbbell swing", "workout_type": "strength", "sets": 4, "repetitions": "15" },
+            { "exercise_name": "Step-up", "workout_type": "strength", "sets": 3, "repetitions": "10 per leg" },
+            { "exercise_name": "Skipping rope", "workout_type": "cardio", "duration_minutes": 8 },
+            { "exercise_name": "Stretching", "workout_type": "mobility", "duration_minutes": 5 }
+        ]
+    },
+    {
+        "id": "mt-07",
+        "name": "Athletic Maintenance",
+        "goal": "maintenance",
+        "level": "advanced",
+        "type": "mixed",
+        "intensity": 3,
+        "daysPerWeek": 5,
+        "durationMin": 55,
+        "equipment": "gym",
+        "description": "Strength, power and conditioning for very active people.",
+        "exercises": [
+            { "exercise_name": "Power clean", "workout_type": "strength", "sets": 4, "repetitions": "4" },
+            { "exercise_name": "Back squat", "workout_type": "strength", "sets": 4, "repetitions": "6" },
+            { "exercise_name": "Weighted pull-up", "workout_type": "strength", "sets": 4, "repetitions": "6" },
+            { "exercise_name": "Rowing machine intervals", "workout_type": "cardio", "duration_minutes": 12 }
+        ]
+    },
+    {
+        "id": "mt-08",
+        "name": "Endurance Maintenance",
+        "goal": "maintenance",
+        "level": "advanced",
+        "type": "cardio",
+        "intensity": 3,
+        "daysPerWeek": 4,
+        "durationMin": 50,
+        "equipment": "home",
+        "description": "Tempo runs and long easy runs to keep a high aerobic base.",
+        "exercises": [
+            { "exercise_name": "Tempo run", "workout_type": "cardio", "duration_minutes": 30 },
+            { "exercise_name": "Easy run", "workout_type": "cardio", "duration_minutes": 15 },
+            { "exercise_name": "Runner's mobility routine", "workout_type": "mobility", "duration_minutes": 5 }
+        ]
+    }
+]
